@@ -7,23 +7,37 @@
 </head>
 <body>
     
-    <div id="clock">Time: 0 Round: 0</div>
+    <div id="clock">  Time<div id="timeCounter">0</div> 
+    Round: <div id="roundCounter">0</div> </div>
     
     
-    <button onclick="timerStart()">Start</button>
+    <button onclick="timerStart(true)">Start</button>
     
-    <button>Round</button>
+    <button onclick="round()">Round</button>
     
-    <button>Clear</button>
+    <button onclick="timerStop()">Clear</button>
 
-<script>
-    let timer;
-    let roundTime;
-
-    function timerStart (){
-        timer = 0;
+    <script>
+        let timer = 0;
+        let roundTime = 0;
         
+    function timerStart (){
+            setInterval(addSecond, 1000);
+        }
 
+    function addSecond(){
+        timer++;
+        document.getElementById('timeCounter').innerHTML = timer;
+    }
+    function round(){
+        roundTime = timer;
+        timer = 0
+        document.getElementById('timeCounter').innerHTML = timer;
+        document.getElementById('roundCounter').innerHTML = roundTime
+    }
+    function timerStop (){
+
+        location.reload()
     }
 
 </script>
